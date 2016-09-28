@@ -2,8 +2,10 @@
 $(document).ready(function(){
 
   //Asign containers to variables
-  var myContainer = $('.data-container');
-  var teamContainer = $('.teams-container');
+  var teamContainer = $('.team-container');
+  var leagueContainer = $('.league-container');
+  var resultsContainer = $('.result-container');
+  var scoreContainer = $('.score-container');
 
   //Ajax function that gets the data
   function getJsonData(sport, date){
@@ -11,12 +13,15 @@ $(document).ready(function(){
       url:"fetch.php",
       method:"POST",
       data:{sport:sport, date:date},
-      dataType:"text",
+      dataType:"json",
       beforeSend: function(){
         $('.loading').show();
       },
       success: function(data){
-        myContainer.html(data);
+        resultsContainer.html(data[0]);
+        scoreContainer.html(data[1]);
+        teamContainer.html(data[2]);
+        leagueContainer.html(data[3]);
         $('.loading').hide();
       }
     });
@@ -48,7 +53,6 @@ $(document).ready(function(){
   $('input[name=sport]').change(function(){
     var sport = $('input[name=sport]:checked').val();
     var date  = $('input[name=date]').val();
-    myContainer.empty();
     getJsonData(sport, date);
   });
 
@@ -56,7 +60,6 @@ $(document).ready(function(){
   $('input[name=date]').change(function(){
     var sport = $('input[name=sport]:checked').val();
     var date  = $('input[name=date]').val();
-    myContainer.empty();
     getJsonData(sport, date);
   });
 

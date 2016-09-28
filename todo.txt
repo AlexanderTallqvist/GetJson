@@ -1,0 +1,3 @@
+Change the current ajax call to two calls, that call fetchTeams.php and fetchScore.php separately.
+Change the code so that the only time the teams or the leagues change, is when a different sport is selected.
+Continue by using all the available filters in fetchScore.php, and filter out the data.

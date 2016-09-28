@@ -66,13 +66,16 @@ $teamEnd = "</select>";
 $teamOutput = $teamStart . $teamMiddle . $teamEnd;
 
 if($results == 0){
-  echo "<h3>"  . $results . " results found" . "</h3>";
-  echo "No data found with the selected values. Try changing some of the values and try again.";
+  $error1 = "<h3>"  . $results . " results found" . "</h3><br>";
+  $error2 = "No data found with the selected values. Try changing some of the values and try again.";
+  $returnArray = array();
+  array_push($returnArray, $error1, $error2);
+  echo json_encode($returnArray);
 }else{
-  echo $teamOutput . "<br>";
-  echo $leaguesOutput . "<br>";
-  echo "<h3>"  . $results . " results found" . "</h3>";
-  echo $output;
+  $results  = "<h3>" . $results . " results found</h3>";
+  $returnArray = array();
+  array_push($returnArray, $results, $output, $teamOutput, $leaguesOutput);
+  echo json_encode($returnArray);
 }
 
 ?>
