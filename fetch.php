@@ -25,7 +25,7 @@ foreach ($array as $index => $item) {
       }
 
       $leaguesString = "<option value='" . $item['league'] . "'>" .  $item['league'] . "</option>";
-      if(!in_array($leagueString, $leaguesArray)){array_push($leaguesArray, $leaguesString);};
+      if(!in_array($leaguesString, $leaguesArray)){array_push($leaguesArray, $leaguesString);};
 
       $teamString1 = "<option value='" . $item['team1'] . "'>" .  $item['team1'] . "</option>";
       $teamString2 = "<option value='" . $item['team2'] . "'>" .  $item['team2'] . "</option>";
@@ -71,6 +71,7 @@ if($results == 0){
   $returnArray = array();
   array_push($returnArray, $error1, $error2);
   echo json_encode($returnArray);
+
 }else{
   $results  = "<h3>" . $results . " results found</h3>";
   $returnArray = array();

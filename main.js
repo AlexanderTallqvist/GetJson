@@ -2,10 +2,10 @@
 $(document).ready(function(){
 
   //Asign containers to variables
-  var teamContainer = $('.team-container');
-  var leagueContainer = $('.league-container');
-  var resultsContainer = $('.result-container');
-  var scoreContainer = $('.score-container');
+  var teamContainer     = $('.team-container');
+  var leagueContainer   = $('.league-container');
+  var resultsContainer  = $('.result-container');
+  var scoreContainer    = $('.score-container');
 
   //Ajax function that gets the data
   function getJsonData(sport, date){
