@@ -22,18 +22,6 @@ $(document).ready(function(){
     });
   }
 
-  //Ajax function that gets all the teams and populates the dropdown
-  function getTeams(){
-    $.ajax({
-      url:"teams.php",
-      method:"POST",
-      dataType:"text",
-      success: function(data){
-        teamContainer.html(data);
-      }
-    });
-  }
-
   //Initiate the datepicker
   $(function(){
     $("#datepicker").datepicker({
@@ -47,7 +35,6 @@ $(document).ready(function(){
   var initSport = $('input[name=sport]:checked').val();
   var initDate = $('input[name=date]').val();
   getJsonData(initSport, initDate);
-  getTeams();
 
   //Refresh date when date is removed
   $('#clear-date').click(function(){
