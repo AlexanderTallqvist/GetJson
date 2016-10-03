@@ -1,1 +1,1 @@
-Continue by using all the available filters in fetchScore.php, and filter out the data.
+Start styling the dashboard

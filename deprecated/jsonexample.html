@@ -1,0 +1,21 @@
+<script>
+
+  function getJsonData(parameter1, parameter2){
+    $.ajax({
+      type: 'GET',
+      url: 'sportdata.json',
+      dataType: 'json',
+      success: function(data){
+        $.each(data, function(index, item){
+          if(item.sport == parameter1){
+            $.each(item, function(key, value){
+              myContainer.append(key + ": " + value + "<br>");
+            });
+            myContainer.append("<br><br>");
+          }
+        });
+      }
+    });
+  };
+
+</script>

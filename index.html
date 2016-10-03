@@ -19,37 +19,18 @@
         <input type="radio" name="sport" value="Korgboll">Korgboll<br>
         <input type="radio" name="sport" value="Ishockey">Ishockey<br>
         <p>Pick a date:</p>
-        <input type="text" name="date" id="datepicker">
+        <input type="text" name="date" id="datepicker" value="Date">
         <input type="button" name="clear-date" id="clear-date" value="Clear Date">
       </form>
 
+      <div class="loading-team">Loading teams...</div>
       <div class="team-container"></div>
       <div class="league-container"></div>
+
+      <div class="loading-score">Loading score...</div>
       <div class="result-container"></div>
       <div class="score-container"></div>
-      <div class="loading">Loading...</div>
+
     </div>
-
-    <script>
-
-      /*function getJsonData(parameter1, parameter2){
-        $.ajax({
-          type: 'GET',
-          url: 'sportdata.json',
-          dataType: 'json',
-          success: function(data){
-            $.each(data, function(index, item){
-              if(item.sport == parameter1){
-                $.each(item, function(key, value){
-                  myContainer.append(key + ": " + value + "<br>");
-                });
-                myContainer.append("<br><br>");
-              }
-            });
-          }
-        });
-      };*/
-
-    </script>
   </body>
 </html>
