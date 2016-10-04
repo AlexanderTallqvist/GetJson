@@ -1,17 +1,15 @@
 
 $(document).ready(function(){
 
-  //Get data when page is loaded
-  getScoreData();
-  getTeamData();
-
-
   //Asign containers to variables
   var teamContainer     = $('.team-container');
   var leagueContainer   = $('.league-container');
   var resultsContainer  = $('.result-container');
   var scoreContainer    = $('.score-container');
 
+  //Get data when page is loaded
+  getScoreData();
+  getTeamData();
 
   //Ajax function that gets the sports data
   function getScoreData(){
@@ -26,13 +24,27 @@ $(document).ready(function(){
       method:"POST",
       data:{sport:sport, date:date, team:team, league:league},
       dataType:"json",
+      contentType: "application/json",
       beforeSend: function(){
         $('.loading-score').show();
+        scoreContainer.html("");
       },
       success: function(data){
         $('.loading-score').hide();
-        resultsContainer.html(data[0]);
-        scoreContainer.html(data[1]);
+        console.log(data);
+
+        $.each(data, function(index, value) {
+          scoreContainer.append(
+            value.sport + "<br>" +
+            value.date + "<br>" +
+            value.team1 + "<br>" +
+            value.team1_score + "<br>" +
+            value.team2 + "<br>" +
+            value.team2_score + "<br>" +
+            value.league + "<br>" +
+            value.city + "<br><br>"
+          );
+        });
       }
     });
   }

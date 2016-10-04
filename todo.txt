@@ -1,1 +1,5 @@
+Figure out why Kinetic isnt working!
+
 Start styling the dashboard
+Reformat the php to be more functional
+Add iFrame videos?

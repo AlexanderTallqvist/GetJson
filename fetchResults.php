@@ -1,22 +1,29 @@
 <?php
+
 $sport  = "Sport";
 $date   = "Date";
 $league = "League";
 $team   = "Team";
 
-if(isset($_POST['sport']) && $_POST['sport']  !== $sport)  {$sport   = $_POST['sport'];}
-if(isset($_POST['date'])  && $_POST['date']   !== $date)   {$date    = $_POST['date'];}
-if(isset($_POST['league'])&& $_POST['league'] !== $league) {$league  = $_POST['league'];}
-if(isset($_POST['team'])  && $_POST['team']   !== $team)   {$team    = $_POST['team'];}
+//$teamQuery   = "";
+//$leagueQuery = "";
+//$dateQuery   = "";
+//$sportQuery  = "";
 
+if(isset($_POST['sport']) && $_POST['sport']  !== $sport)  {$sport   = $_POST['sport'];  /*$sportQuery   =  "$" . "item['sport']"  . " == "  . $sport          */;}
+if(isset($_POST['date'])  && $_POST['date']   !== $date)   {$date    = $_POST['date'];   /*$dateQuery    =  "$" . "item['date']"   . " == "  . $date   . " && ";*/}
+if(isset($_POST['league'])&& $_POST['league'] !== $league) {$league  = $_POST['league']; /*$leagueQuery  =  "$" . "item['league']" . " == "  . $league . " && ";*/}
+if(isset($_POST['team'])  && $_POST['team']   !== $team)   {$team    = $_POST['team'];   /*$teamQuery    =  "$" . "item['team']"   . " == "  . $team   . " && ";*/}
 
 $output = "";
 $results = 0;
 $returnArray = array();
 
-//$jsondata = file_get_contents("http://alexandertallqvist.net/sportdata.json");
-$jsondata = file_get_contents("sportdata.json");
-$array = json_decode($jsondata, true);
+//$finalQuery = $dateQuery . $leagueQuery . $teamQuery . $sportQuery;
+//$jsonData = file_get_contents("http://alexandertallqvist.net/sportdata.json");
+
+$jsonData = file_get_contents("sportdata.json");
+$array = json_decode($jsonData, true);
 
 foreach ($array as $index => $item) {
 
