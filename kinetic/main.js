@@ -23,8 +23,8 @@ $(document).ready(function(){
       url:"fetchResults.php",
       method:"POST",
       data:{sport:sport, date:date, team:team, league:league},
-      dataType:"json",
-      contentType: "application/json",
+      dataType:"text",
+      //contentType: "application/json",
       beforeSend: function(){
         $('.loading-score').show();
         scoreContainer.html("");
@@ -32,19 +32,20 @@ $(document).ready(function(){
       success: function(data){
         $('.loading-score').hide();
         console.log(data);
+        scoreContainer.html(data);
 
-        $.each(data, function(index, value) {
+        /*$.each(data, function(index, value) {
           scoreContainer.append(
-            value.sport + "<br>" +
-            value.date + "<br>" +
-            value.team1 + "<br>" +
-            value.team1_score + "<br>" +
-            value.team2 + "<br>" +
-            value.team2_score + "<br>" +
-            value.league + "<br>" +
-            value.city + "<br><br>"
+            value.sport           + "<br>" +
+            value.date            + "<br>" +
+            value.team1           + "<br>" +
+            value.team1_score     + "<br>" +
+            value.team2           + "<br>" +
+            value.team2_score     + "<br>" +
+            value.league          + "<br>" +
+            value.city            + "<br><br>"
           );
-        });
+        });*/
       }
     });
   }
