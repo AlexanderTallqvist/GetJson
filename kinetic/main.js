@@ -22,30 +22,29 @@ $(document).ready(function(){
     $.ajax({
       url:"fetchResults.php",
       method:"POST",
-      data:{sport:sport, date:date, team:team, league:league},
-      dataType:"text",
-      //contentType: "application/json",
+      data:{sport:sport, date:date, league:league, team:team},
+      dataType:"json",
       beforeSend: function(){
         $('.loading-score').show();
         scoreContainer.html("");
       },
       success: function(data){
         $('.loading-score').hide();
-        console.log(data);
-        scoreContainer.html(data);
 
-        /*$.each(data, function(index, value) {
-          scoreContainer.append(
-            value.sport           + "<br>" +
-            value.date            + "<br>" +
-            value.team1           + "<br>" +
-            value.team1_score     + "<br>" +
-            value.team2           + "<br>" +
-            value.team2_score     + "<br>" +
-            value.league          + "<br>" +
-            value.city            + "<br><br>"
-          );
-        });*/
+        if(data != "No values found"){
+          $.each(data, function(index, value) {
+            scoreContainer.append(
+              value.sport           + "<br>" +
+              value.date            + "<br>" +
+              value.team1           + "<br>" +
+              value.team1_score     + "<br>" +
+              value.team2           + "<br>" +
+              value.team2_score     + "<br>" +
+              value.league          + "<br>" +
+              value.city            + "<br><br>"
+            );
+          });
+        }else{scoreContainer.append("No values found. Try reseting your filters.");}
       }
     });
   }
