@@ -8,8 +8,12 @@ $(document).ready(function(){
   var scoreContainer    = $('.table tbody');
   var errorContainer    = $('.error-container');
 
+  //Emppty all the containers
+  scoreContainer.empty();
+  errorContainer.empty();
+  resultsContainer.empty();
+
   //Get data when page is loaded
-  getScoreData();
   getTeamData();
 
   //Ajax function that gets the sports data
@@ -28,9 +32,9 @@ $(document).ready(function(){
 
       beforeSend: function(){
         $('.loading-score').show();
-        scoreContainer.html("");
-        errorContainer.html("");
-        resultsContainer.html("");
+        scoreContainer.empty();
+        errorContainer.empty();
+        resultsContainer.empty();
       },
 
       success: function(data){
@@ -49,9 +53,9 @@ $(document).ready(function(){
               "<td>" + value.team2        + "</td>" +
               "<td>" + value.team2_score  + "</td>" +
               "<td>" + value.league       + "</td>" +
-              "<td>" + value.city         + "</td>"+
-              "<td><a class='live-link' target='_blank' href='" + value.live + "'>Live Stream</a>" +
-              "<div class='box'><iframe width='300' height='200' src='" + value.live + "' frameborder='0'></iframe></div></td></tr>"
+              "<td>" + value.city         + "</td></tr>"
+              //"<td><a class='live-link' target='_blank' href='" + value.live + "'>Live Stream</a>" +
+              //"<div class='box'><iframe width='300' height='200' src='" + value.live + "' frameborder='0'></iframe></div></td></tr>"
             );
           });
 

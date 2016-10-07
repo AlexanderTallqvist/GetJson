@@ -1,8 +1,32 @@
 <?php
 
-// Get Json data
-$jsonData = file_get_contents("sportdata.json");
-$data = json_decode($jsonData, true);
+// Start the session
+session_start();
+
+// Get data if not set
+if(!isset($_SESSION['data'])){
+
+  // Get Json data
+  $jsonData = file_get_contents("http://alexandertallqvist.net/sportdata.json");
+  $data = json_decode($jsonData, true);
+
+  if(is_array($data)){
+     $_SESSION['data'] = $data;
+     $_SESSION['timeout'] = time();
+  }
+}
+
+// Refresh data if over 60 seconds has passed
+if($_SESSION['timeout'] + 1 * 5 < time()){
+
+  // Get Json data
+  $jsonData = file_get_contents("sportdata.json");
+  $data = json_decode($jsonData, true);
+
+  $_SESSION['data'] = $data;
+  $_SESSION['timeout'] = time();
+}
+
 
 // Fields to be checked by key
 $fields = array(
@@ -51,12 +75,18 @@ foreach ($check as $value) {
 }
 
 // Call the filter function witht the Json data
-$data = filter_all($_POST, $data);
+$data = filter_all($_POST, $_SESSION['data']);
 
 //Add error message if $data is empty.
 if(empty($data)){
   array_push($data, "No values found");
 }
+
+// Arrange the data by the filter before returning it
+foreach ($data as $key => $row) {
+    $city[$key] = $row['team1_score'];
+}
+array_multisort($city, SORT_DESC, $data);
 
 // Return Json formatted data
 echo json_encode($data);
