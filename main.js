@@ -131,14 +131,17 @@ $(document).ready(function(){
     getScoreData();
   });
 
+
   //Function for resetting the filters
   $(document).on('click', '.reset', function() {
     $('input[name=sport]').prop('checked', function () {
         return this.getAttribute('checked') == 'checked';
     });
+
     $('input[name=date]').val('Date');
     $('.league-dropdown').val('League');
     $('.team-dropdown').val('Team');
+
     getScoreData();
   });
 
