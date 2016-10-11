@@ -17,6 +17,7 @@
 	============================================================= */
 .left-sidebar {
   margin-top: 20px;
+  /* DATE FORM STYLES */
 }
 
 .left-sidebar .team-container select,
@@ -25,9 +26,43 @@
   height: 20px;
 }
 
-.left-sidebar #datepicker {
-  width: 170px;
+.left-sidebar .date-form #datepicker {
+  width: 145px;
   height: 20px;
+}
+
+.left-sidebar .date-form #clear-date {
+  display: inline-block;
+  font-family: "Arial", Serif;
+  background: #c0392b;
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  cursor: pointer;
+  position: relative;
+  bottom: -5px;
+}
+
+.left-sidebar .date-form #clear-date:before, .left-sidebar .date-form #clear-date:after {
+  background-color: #fff;
+  content: " ";
+  height: 12px;
+  left: 9px;
+  position: absolute;
+  top: 4px;
+  width: 2px;
+}
+
+.left-sidebar .date-form #clear-date:before {
+  transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.left-sidebar .date-form #clear-date:after {
+  transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
 }
 
 /*
@@ -50,13 +85,20 @@
   /* SPORT FORM STYLES */
 }
 
+.main-table .result-container {
+  padding-top: 3px;
+}
+
+.main-table .table-header {
+  background: #81e0a9;
+}
+
 .main-table .loading {
   content: "";
   position: absolute;
   background: #d9edf7;
   width: 100%;
-  height: 100%;
-  min-height: 400px;
+  height: 400px;
   z-index: 100;
   display: none;
   border-radius: 10px;
@@ -84,25 +126,28 @@
   }
 }
 
-.main-table form {
-  margin-bottom: 20px;
+.main-table .sport-form {
+  margin-bottom: 15px;
+  border-bottom: 1px solid #AEBFCE;
+  padding-bottom: 5px;
 }
 
-.main-table form input[type="radio"] {
+.main-table .sport-form input[type="radio"] {
   display: none;
   opacity: 0;
   width: 0;
   margin: 0;
 }
 
-.main-table form label {
+.main-table .sport-form label {
   color: #fff;
   position: relative;
 }
 
-.main-table form label[for="fotboll"],
-.main-table form label[for="korgboll"],
-.main-table form label[for="ishockey"] {
+.main-table .sport-form label[for="fotboll"],
+.main-table .sport-form label[for="korgboll"],
+.main-table .sport-form label[for="ishockey"],
+.main-table .sport-form label[for="afotboll"] {
   margin: 10px;
   display: inline-block;
   padding-left: 70px;
@@ -110,30 +155,37 @@
   cursor: pointer;
 }
 
-.main-table form label[for="fotboll"] {
+.main-table .sport-form label[for="fotboll"] {
   background: url(../img/football2.png) no-repeat;
   background-position: 0 -69px;
 }
 
-.main-table form label[for="korgboll"] {
+.main-table .sport-form label[for="korgboll"] {
   background: url(../img/basketball2.png) no-repeat;
   background-position: 0 -69px;
 }
 
-.main-table form label[for="ishockey"] {
+.main-table .sport-form label[for="ishockey"] {
   background: url(../img/hockey2.png) no-repeat;
   background-position: 0 -73px;
 }
 
-.main-table form input:checked + label[for="fotboll"],
-.main-table form input:checked + label[for="korgboll"],
-.main-table form input:checked + label[for="ishockey"] {
+.main-table .sport-form label[for="afotboll"] {
+  background: url(../img/afotball2.png) no-repeat;
+  background-position: 0 -67px;
+}
+
+.main-table .sport-form input:checked + label[for="fotboll"],
+.main-table .sport-form input:checked + label[for="korgboll"],
+.main-table .sport-form input:checked + label[for="ishockey"],
+.main-table .sport-form input:checked + label[for="afotboll"] {
   background-position: 0 2px;
 }
 
-.main-table form label[for="fotboll"]:before,
-.main-table form label[for="korgboll"]:before,
-.main-table form label[for="ishockey"]:before {
+.main-table .sport-form label[for="fotboll"]:before,
+.main-table .sport-form label[for="korgboll"]:before,
+.main-table .sport-form label[for="ishockey"]:before,
+.main-table .sport-form label[for="afotboll"]:before {
   content: "";
   position: absolute;
   width: 60%;
@@ -144,21 +196,26 @@
   transition: all 0.3s ease-in-out 0s;
 }
 
-.main-table form label[for="fotboll"]:before {
+.main-table .sport-form label[for="fotboll"]:before {
   background-color: #2ecc71;
 }
 
-.main-table form label[for="korgboll"]:before {
+.main-table .sport-form label[for="korgboll"]:before {
   background-color: #e67e22;
 }
 
-.main-table form label[for="ishockey"]:before {
+.main-table .sport-form label[for="ishockey"]:before {
   background-color: #3498db;
 }
 
-.main-table form input:checked + label[for="fotboll"]:before,
-.main-table form input:checked + label[for="korgboll"]:before,
-.main-table form input:checked + label[for="ishockey"]:before {
+.main-table .sport-form label[for="afotboll"]:before {
+  background-color: #e74c3c;
+}
+
+.main-table .sport-form input:checked + label[for="fotboll"]:before,
+.main-table .sport-form input:checked + label[for="korgboll"]:before,
+.main-table .sport-form input:checked + label[for="ishockey"]:before,
+.main-table .sport-form input:checked + label[for="afotboll"]:before {
   visibility: visible;
   transform: scaleX(1);
 }

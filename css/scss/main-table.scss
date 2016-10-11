@@ -5,6 +5,15 @@
 .main-table {
   position: relative;
 
+  .result-container {
+    padding-top: 3px;
+  }
+
+  .table-header {
+    background: #81e0a9;
+  }
+
+
   /* Loading Screen */
 
   .loading {
@@ -12,8 +21,7 @@
     position: absolute;
     background: #d9edf7;
     width: 100%;
-    height: 100%;
-    min-height: 400px;
+    height: 400px;
     z-index: 100;
     display: none;
     border-radius: 10px;
@@ -39,8 +47,10 @@
 
   /* SPORT FORM STYLES */
 
-  form {
-    margin-bottom: 20px;
+  .sport-form {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #AEBFCE;
+    padding-bottom: 5px;
 
     input[type="radio"] {
       display: none;
@@ -49,7 +59,7 @@
       margin: 0;
     }
 
-    label{
+    label {
       color: #fff;
       position: relative;
     }
@@ -57,7 +67,8 @@
     // Setting the image
     label[for="fotboll"],
     label[for="korgboll"],
-    label[for="ishockey"]{
+    label[for="ishockey"],
+    label[for="afotboll"] {
       margin: 10px;
       display: inline-block;
       padding-left: 70px;
@@ -75,21 +86,28 @@
       background-position: 0 -69px;
     }
 
-    label[for="ishockey"]{
+    label[for="ishockey"] {
       background: url(../img/hockey2.png) no-repeat;
       background-position: 0 -73px;
     }
 
+    label[for="afotboll"] {
+      background: url(../img/afotball2.png) no-repeat;
+      background-position: 0 -67px;
+    }
+
     input:checked + label[for="fotboll"],
     input:checked + label[for="korgboll"],
-    input:checked + label[for="ishockey"]{
+    input:checked + label[for="ishockey"],
+    input:checked + label[for="afotboll"] {
       background-position: 0 2px;
     }
 
     // Underline animation
     label[for="fotboll"]:before,
     label[for="korgboll"]:before,
-    label[for="ishockey"]:before{
+    label[for="ishockey"]:before,
+    label[for="afotboll"]:before {
       content: "";
       position: absolute;
       width: 60%;
@@ -112,9 +130,14 @@
       background-color: $hockey;
     }
 
+    label[for="afotboll"]:before {
+      background-color: $afootball;
+    }
+
     input:checked + label[for="fotboll"]:before,
     input:checked + label[for="korgboll"]:before,
-    input:checked + label[for="ishockey"]:before {
+    input:checked + label[for="ishockey"]:before,
+    input:checked + label[for="afotboll"]:before {
       visibility: visible;
       transform: scaleX(1);
     }

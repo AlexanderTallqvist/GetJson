@@ -15,8 +15,8 @@ $teamArray = array();
 if(!isset($_SESSION['data_teams'])){
 
   // Get Json data
-  $jsonData = file_get_contents("http://alexandertallqvist.net/sportdata.json");
-  $array = json_decode($jsonData, true);
+  $teamJson = file_get_contents("http://alexandertallqvist.net/sportdata.json");
+  $array = json_decode($teamJson, true);
 
   if(is_array($array)){
      $_SESSION['data_teams'] = $array;
@@ -28,8 +28,8 @@ if(!isset($_SESSION['data_teams'])){
 if($_SESSION['timeout_teams'] + 1 * 60 < time()){
 
   // Get Json data
-  $jsonData = file_get_contents("sportdata.json");
-  $array = json_decode($jsonData, true);
+  $teamJson = file_get_contents("http://alexandertallqvist.net/sportdata.json");
+  $array = json_decode($teamJson, true);
 
   $_SESSION['data_teams'] = $array;
   $_SESSION['timeout_teams'] = time();

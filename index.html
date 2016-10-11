@@ -28,8 +28,8 @@
 
           <form class="date-form" action="">
             <h3>Date</h3>
-            <input type="text" name="date" id="datepicker" value="Date"><br><br>
-            <input class="btn btn-sm btn-primary" type="button" name="clear-date" id="clear-date" value="Clear Date">
+            <input type="text" name="date" id="datepicker" value="Date">
+            <span id="clear-date"></span>
           </form>
 
           <br><br>
@@ -46,15 +46,17 @@
             <label for="korgboll">Name</label>
             <input type="radio" id="ishockey" name="sport" value="Ishockey">
             <label for="ishockey">Name</label>
+            <input type="radio" id="afotboll" name="sport" value="Afotboll">
+            <label for="afotboll">Name</label>
           </form>
 
           <div class="loading"><div class="spinner"></div></div>
 
           <div class="result-container"><h4>Your filters found a total of <span class="result"></span> results:</h4></div>
 
-          <table class="table table-bordered">
+          <table class="table table-border table-striped">
             <thead>
-              <tr class="info">
+              <tr class="table-header">
                 <th>Sport</th>
                 <th>Date</th>
                 <th>Team1</th>
@@ -63,7 +65,7 @@
                 <th>Score</th>
                 <th>League</th>
                 <th>City</th>
-                <th>Stream</th>
+                <!--<th>Stream</th>-->
               </tr>
             </thead>
             <tbody></tbody>

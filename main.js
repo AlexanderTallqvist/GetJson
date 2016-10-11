@@ -14,11 +14,15 @@ $(document).ready(function(){
   errorContainer.empty();
   resultsContainer.empty();
 
+  //Check the default radio button
+  $("#fotboll").prop("checked", true);
+
   //Get data when page is loaded
   getTeamData();
 
   //Ajax function that gets the sports data
   function getScoreData(){
+    loadingContainer.show();
 
     var sport  = $('input[name=sport]:checked').val();
     var date   = $('input[name=date]').val();
@@ -32,14 +36,12 @@ $(document).ready(function(){
       dataType:"json",
 
       beforeSend: function(){
-        loadingContainer.show();
         scoreContainer.empty();
         errorContainer.empty();
         resultsContainer.empty();
       },
 
       success: function(data){
-      loadingContainer.delay(300).fadeOut();
 
         if(data != "No values found"){
           var results = 0;
@@ -62,9 +64,12 @@ $(document).ready(function(){
 
           resultsContainer.html(results);
 
-        }else{errorContainer.append("<div class='error alert alert-info'>No values found. Try reseting your filters." +
-          "<br><br><button class='reset btn btn-primary'>Reset Filters</button></div>");
-         }
+        }else{errorContainer.append(
+          "<div class='error alert alert-info'>No values found. Try resetting your filters." +
+          "<br><br><button class='reset btn btn-primary'>Reset Filters</button></div>"
+        );}
+
+       loadingContainer.delay(300).fadeOut();
       }
     });
   }
@@ -72,7 +77,6 @@ $(document).ready(function(){
 
   //Ajax function that gets the teams and the leagues
   function getTeamData(){
-
     var sport  = $('input[name=sport]:checked').val();
 
     $.ajax({
@@ -99,6 +103,19 @@ $(document).ready(function(){
       dateFormat: 'd.m.yy',
     });
   });
+
+
+  // Change table header depending on sport
+  $("label[for=fotboll]" ).click(function(){ChangeColor("#81e0a9");});
+  $("label[for=korgboll]").click(function(){ChangeColor("#f0b17a");});
+  $("label[for=ishockey]").click(function(){ChangeColor("#85c1e9");});
+  $("label[for=afotboll]").click(function(){ChangeColor("#f0938a");});
+
+  function ChangeColor(color) {
+    setTimeout(function(){
+      $('.table-header').css("background", color);
+    },300);
+  }
 
 
   //Get new data when the sport is changed
@@ -134,16 +151,15 @@ $(document).ready(function(){
 
   //Function for resetting the filters
   $(document).on('click', '.reset', function() {
-    $('input[name=sport]').prop('checked', function () {
-        return this.getAttribute('checked') == 'checked';
-    });
-
+    $("#fotboll").prop("checked", true);
     $('input[name=date]').val('Date');
     $('.league-dropdown').val('League');
     $('.team-dropdown').val('Team');
 
     getScoreData();
+    ChangeColor("#81e0a9");
   });
+
 
 
 });

@@ -7,8 +7,8 @@ session_start();
 if(!isset($_SESSION['data'])){
 
   // Get Json data
-  $jsonData = file_get_contents("http://alexandertallqvist.net/sportdata.json");
-  $data = json_decode($jsonData, true);
+  $scoreJson = file_get_contents("http://alexandertallqvist.net/sportdata.json");
+  $data = json_decode($scoreJson, true);
 
   if(is_array($data)){
      $_SESSION['data'] = $data;
@@ -20,8 +20,8 @@ if(!isset($_SESSION['data'])){
 if($_SESSION['timeout'] + 1 * 60 < time()){
 
   // Get Json data
-  $jsonData = file_get_contents("sportdata.json");
-  $data = json_decode($jsonData, true);
+  $scoreJson = file_get_contents("http://alexandertallqvist.net/sportdata.json");
+  $data = json_decode($scoreJson, true);
 
   $_SESSION['data'] = $data;
   $_SESSION['timeout'] = time();
