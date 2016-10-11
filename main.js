@@ -2,9 +2,9 @@
 $(document).ready(function(){
 
   //Asign containers to variables
-  var teamContainer     = $('.team-container');
-  var leagueContainer   = $('.league-container');
-  var resultsContainer  = $('.result-container');
+  var teamContainer     = $('.team-container select');
+  var leagueContainer   = $('.league-container select');
+  var resultsContainer  = $('.result-container .result');
   var scoreContainer    = $('.table tbody');
   var errorContainer    = $('.error-container');
 
@@ -31,15 +31,12 @@ $(document).ready(function(){
       dataType:"json",
 
       beforeSend: function(){
-        $('.loading-score').show();
         scoreContainer.empty();
         errorContainer.empty();
         resultsContainer.empty();
       },
 
       success: function(data){
-        $('.loading-score').hide();
-
         if(data != "No values found"){
           var results = 0;
 
@@ -59,7 +56,7 @@ $(document).ready(function(){
             );
           });
 
-          resultsContainer.html("<h4>Your filters found a total of " + results + " results.</h4>");
+          resultsContainer.html(results);
 
         }else{errorContainer.append("<div class='error alert alert-info'>No values found. Try reseting your filters." +
         "<button class='reset btn btn-primary'>Reset Filters</button></div>");}
@@ -78,13 +75,11 @@ $(document).ready(function(){
       method:"POST",
       data:{sport:sport},
       dataType:"json",
-      beforeSend: function(){
-        $('.loading-team').show();
-      },
       success: function(data){
-        $('.loading-team').hide();
-        teamContainer.html(data[0]);
-        leagueContainer.html(data[1]);
+        $('.team-container select option[value!="Team"]').remove();
+        $('.league-container select option[value!="League"]').remove();
+        teamContainer.append(data[0]);
+        leagueContainer.append(data[1]);
         getScoreData();
       }
     });

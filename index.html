@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Get Json</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/css/styles.css">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/smoothness/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
@@ -16,30 +16,34 @@
 
         <h1 class="title">Get sports data</h1>
 
-        <div class="col-sm-4 form-group">
-          <a class="live-link" target="_blank" href="https://www.youtube.com/embed/L6Tyn0uH-ZM?autoplay=1">Live</a>
-          <div class="box"><iframe width="300" height="200" src="https://www.youtube.com/embed/L6Tyn0uH-ZM?autoplay=1" frameborder="0"></iframe></div>
-          <h3>Choose a sport:</h3>
-          <form class="sort" action="">
-            <input type="radio" name="sport" value="Fotboll" checked="checked">Fotboll<br>
-            <input type="radio" name="sport" value="Korgboll">Korgboll<br>
-            <input type="radio" name="sport" value="Ishockey">Ishockey<br>
-            <br>
+        <div class="col-sm-4 form-group left-sidebar">
+          <form class="date-form" action="">
             <h3>Pick a date:</h3>
             <input type="text" name="date" id="datepicker" value="Date">
             <input class="btn btn-sm btn-primary" type="button" name="clear-date" id="clear-date" value="Clear Date">
           </form>
 
-          <div class="loading-team">Loading teams...</div>
-          <div class="team-container"></div>
-          <div class="league-container"></div>
+          <div class="team-container">
+            <h3>Teams</h4><select class='team-dropdown'><option value='Team'>Choose a team</option></select>
+          </div>
+
+          <div class="league-container">
+            <h3>Leagues</h4><select class='league-dropdown'><option value='League'>Choose a league</option></select>
+          </div>
+
           <br><br><br>
           <button class="reset btn btn-primary">Reset Filters</button>
         </div>
 
-        <div class="col-sm-8">
-          <div class="loading-score">Loading score...</div>
-          <div class="result-container"></div>
+        <div class="col-sm-8 main-table">
+          <form class="sport-form" action="">
+            <input type="radio" name="sport" value="Fotboll" checked="checked">
+            <input type="radio" name="sport" value="Korgboll">
+            <input type="radio" name="sport" value="Ishockey">
+          </form>
+
+          <div class="result-container"><h4>Your filters found a total of <span class="result"></span> results.</h4></div>
+
           <table class="table table-bordered">
             <thead>
               <tr class="info">
@@ -56,6 +60,7 @@
             </thead>
             <tbody></tbody>
           </table>
+
           <div class="error-container"></div>
         </div>
 

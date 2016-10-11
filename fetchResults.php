@@ -17,7 +17,7 @@ if(!isset($_SESSION['data'])){
 }
 
 // Refresh data if over 60 seconds has passed
-if($_SESSION['timeout'] + 1 * 5 < time()){
+if($_SESSION['timeout'] + 1 * 60 < time()){
 
   // Get Json data
   $jsonData = file_get_contents("sportdata.json");
@@ -77,16 +77,17 @@ foreach ($check as $value) {
 // Call the filter function witht the Json data
 $data = filter_all($_POST, $_SESSION['data']);
 
-//Add error message if $data is empty.
+// Add error message if $data is empty.
+// Arrange the data by the filter before returning it
+// If data isn't empty
 if(empty($data)){
   array_push($data, "No values found");
+}else{
+  foreach ($data as $key => $row) {
+      $city[$key] = $row['team1_score'];
+  }
+  array_multisort($city, SORT_DESC, $data);
 }
-
-// Arrange the data by the filter before returning it
-foreach ($data as $key => $row) {
-    $city[$key] = $row['team1_score'];
-}
-array_multisort($city, SORT_DESC, $data);
 
 // Return Json formatted data
 echo json_encode($data);
