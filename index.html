@@ -14,14 +14,9 @@
     <div class="container">
       <div class="row">
 
-        <h1 class="title">Get sports data</h1>
+        <h1 class="title">Vedonlyöntiareena Tulospalvelu</h1>
 
-        <div class="col-sm-4 form-group left-sidebar">
-          <form class="date-form" action="">
-            <h3>Pick a date:</h3>
-            <input type="text" name="date" id="datepicker" value="Date">
-            <input class="btn btn-sm btn-primary" type="button" name="clear-date" id="clear-date" value="Clear Date">
-          </form>
+        <div class="col-sm-3 form-group left-sidebar">
 
           <div class="team-container">
             <h3>Teams</h4><select class='team-dropdown'><option value='Team'>Choose a team</option></select>
@@ -31,18 +26,31 @@
             <h3>Leagues</h4><select class='league-dropdown'><option value='League'>Choose a league</option></select>
           </div>
 
-          <br><br><br>
+          <form class="date-form" action="">
+            <h3>Date</h3>
+            <input type="text" name="date" id="datepicker" value="Date"><br><br>
+            <input class="btn btn-sm btn-primary" type="button" name="clear-date" id="clear-date" value="Clear Date">
+          </form>
+
+          <br><br>
           <button class="reset btn btn-primary">Reset Filters</button>
         </div>
 
-        <div class="col-sm-8 main-table">
+
+        <div class="col-sm-9 main-table">
+
           <form class="sport-form" action="">
-            <input type="radio" name="sport" value="Fotboll" checked="checked">
-            <input type="radio" name="sport" value="Korgboll">
-            <input type="radio" name="sport" value="Ishockey">
+            <input type="radio" id="fotboll" name="sport" value="Fotboll" checked="checked">
+            <label for="fotboll">Name</label>
+            <input type="radio" id="korgboll" name="sport" value="Korgboll">
+            <label for="korgboll">Name</label>
+            <input type="radio" id="ishockey" name="sport" value="Ishockey">
+            <label for="ishockey">Name</label>
           </form>
 
-          <div class="result-container"><h4>Your filters found a total of <span class="result"></span> results.</h4></div>
+          <div class="loading"><div class="spinner"></div></div>
+
+          <div class="result-container"><h4>Your filters found a total of <span class="result"></span> results:</h4></div>
 
           <table class="table table-bordered">
             <thead>

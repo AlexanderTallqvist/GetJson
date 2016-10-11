@@ -1,0 +1,42 @@
+
+/*  Left Sidebar Styles
+	============================================================= */
+
+.left-sidebar {
+  margin-top: 20px;
+
+  .team-container,
+  .league-container {
+
+    select {
+      width: 170px;
+      height: 20px;
+    }
+
+  }
+
+  #datepicker {
+    width: 170px;
+    height: 20px;
+  }
+
+
+
+
+
+}
+
+
+
+/*
+.box {
+    display: none;
+    width: 100%;
+}
+
+.live-link:hover + .box{
+    display: block;
+    position: absolute;
+    z-index: 100;
+}
+*/

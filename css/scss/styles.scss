@@ -1,14 +1,4 @@
-.container{
-
-
-  .left-sidebar{
-
-  }
-
-
-  .main-table{
-
-  }
-
-
-}
+@import "variables.scss";
+@import "general.scss";
+@import "left-sidebar.scss";
+@import "main-table.scss";

@@ -7,6 +7,7 @@ $(document).ready(function(){
   var resultsContainer  = $('.result-container .result');
   var scoreContainer    = $('.table tbody');
   var errorContainer    = $('.error-container');
+  var loadingContainer  = $('.loading');
 
   //Emppty all the containers
   scoreContainer.empty();
@@ -31,12 +32,15 @@ $(document).ready(function(){
       dataType:"json",
 
       beforeSend: function(){
+        loadingContainer.show();
         scoreContainer.empty();
         errorContainer.empty();
         resultsContainer.empty();
       },
 
       success: function(data){
+      loadingContainer.delay(300).fadeOut();
+
         if(data != "No values found"){
           var results = 0;
 
@@ -59,7 +63,8 @@ $(document).ready(function(){
           resultsContainer.html(results);
 
         }else{errorContainer.append("<div class='error alert alert-info'>No values found. Try reseting your filters." +
-        "<button class='reset btn btn-primary'>Reset Filters</button></div>");}
+          "<br><br><button class='reset btn btn-primary'>Reset Filters</button></div>");
+         }
       }
     });
   }
