@@ -6,7 +6,9 @@ html {
   box-sizing: inherit;
 }
 
-/*  Colors
+/*  Colors for sports
+	============================================================= */
+/*  Background shades
 	============================================================= */
 /*  General Styles
 	============================================================= */
@@ -18,6 +20,12 @@ html {
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+  font-family: 'Open Sans', sans-serif;
+  max-width: 900px;
+  height: auto;
+  background: #29282d;
+  border: 2px solid #d1334e;
+  overflow: hidden;
 }
 
 .container::after {
@@ -26,40 +34,140 @@ html {
   display: block;
 }
 
-.container .title {
-  text-align: center;
-  margin-bottom: 50px;
-  font-size: 35px;
+/* Main filters */
+.filters {
+  background: #2f2f30;
+}
+
+.filters .result-container {
+  float: right;
+  margin: -20px 15px 0px 0px;
+  min-width: 80px;
+}
+
+.filters .result-container h4, .filters .result-container span {
+  color: #d1334e;
+  font-weight: 300;
   text-transform: uppercase;
 }
 
-/*  Left Sidebar Styles
+/* Reset buttons */
+.reset {
+  display: block;
+  margin: 20px 0px 0px 10px;
+  background: #d1334e;
+  color: #ffF;
+  border: none;
+  cursor: pointer;
+  padding: 10px 20px;
+}
+
+/* Error text */
+.error h3 {
+  font-size: 20px;
+  color: #fff;
+  margin: 20px 10px;
+  font-weight: 500;
+}
+
+/* Loading Screen */
+.loading {
+  content: "";
+  position: absolute;
+  background: #d1334e;
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  z-index: 100;
+}
+
+.loading .spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  border: 10px solid #fff;
+  border-top: 10px solid #29282d;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/*  Dropdown Filter Styles
 	============================================================= */
-.left-sidebar {
+.dropdown-filters {
+  display: block;
+  padding: 5px 0px 30px 10px;
+  width: 100%;
+}
+
+.dropdown-filters::after {
+  clear: both;
+  content: "";
+  display: block;
+}
+
+.dropdown-filters .team-container,
+.dropdown-filters .league-container,
+.dropdown-filters .date-container,
+.dropdown-filters .reset-contaienr {
   float: left;
   display: block;
   margin-right: 2.35765%;
   width: 23.23176%;
-  margin-top: 20px;
-  /* DATE FORM STYLES */
+  position: relative;
 }
 
-.left-sidebar:last-child {
+.dropdown-filters .team-container:last-child,
+.dropdown-filters .league-container:last-child,
+.dropdown-filters .date-container:last-child,
+.dropdown-filters .reset-contaienr:last-child {
   margin-right: 0;
 }
 
-.left-sidebar .team-container select,
-.left-sidebar .league-container select {
-  width: 170px;
-  height: 20px;
+.dropdown-filters .team-container--title,
+.dropdown-filters .league-container--title,
+.dropdown-filters .date-container--title,
+.dropdown-filters .reset-contaienr--title {
+  font-size: 18px;
+  color: #d1334e;
+  font-weight: 500;
+  margin: 5px 0;
+  padding: 0;
+  text-transform: uppercase;
 }
 
-.left-sidebar .date-form #datepicker {
-  width: 145px;
-  height: 20px;
+.dropdown-filters .team-container--dropdown, .dropdown-filters .team-container--select,
+.dropdown-filters .league-container--dropdown,
+.dropdown-filters .league-container--select,
+.dropdown-filters .date-container--dropdown,
+.dropdown-filters .date-container--select,
+.dropdown-filters .reset-contaienr--dropdown,
+.dropdown-filters .reset-contaienr--select {
+  width: 80%;
+  height: 25px;
+  line-height: 30px;
+  display: inline-block;
+  position: relative;
+  bottom: 0;
+  border: 1px solid #d1334e;
 }
 
-.left-sidebar .date-form #clear-date {
+.dropdown-filters .date-container--title {
+  margin-bottom: 1px;
+}
+
+.dropdown-filters .date-container--clear {
   display: inline-block;
   font-family: "Arial", Serif;
   background: #c0392b;
@@ -71,7 +179,7 @@ html {
   bottom: -5px;
 }
 
-.left-sidebar .date-form #clear-date:before, .left-sidebar .date-form #clear-date:after {
+.dropdown-filters .date-container--clear:before, .dropdown-filters .date-container--clear:after {
   background-color: #fff;
   content: " ";
   height: 12px;
@@ -81,13 +189,13 @@ html {
   width: 2px;
 }
 
-.left-sidebar .date-form #clear-date:before {
+.dropdown-filters .date-container--clear:before {
   transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
 }
 
-.left-sidebar .date-form #clear-date:after {
+.dropdown-filters .date-container--clear:after {
   transform: rotate(-45deg);
   -ms-transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
@@ -105,84 +213,42 @@ html {
     z-index: 100;
 }
 */
-/*  Main table Styles
+/*  Sport Filter Styles
 	============================================================= */
-.main-table {
-  float: left;
+.sport-filters {
   display: block;
-  margin-right: 2.35765%;
-  width: 74.41059%;
-  position: relative;
-  /* Loading Screen */
+  padding-top: 5px;
+  width: 100%;
   /* SPORT FORM STYLES */
 }
 
-.main-table:last-child {
-  margin-right: 0;
-}
-
-.main-table .result-container {
-  padding-top: 3px;
-}
-
-.main-table .table-header {
-  background: #81e0a9;
-}
-
-.main-table .loading {
+.sport-filters::after {
+  clear: both;
   content: "";
-  position: absolute;
-  background: #d9edf7;
-  width: 100%;
-  height: 400px;
-  z-index: 100;
-  border-radius: 10px;
-}
-
-.main-table .loading .spinner {
-  position: absolute;
-  top: 50%;
-  left: 50%;
   display: block;
-  border: 10px solid #f3f3f3;
-  border-top: 10px solid #3498db;
-  border-radius: 50%;
-  width: 100px;
-  height: 100px;
-  animation: spin 1s linear infinite;
 }
 
-@keyframes spin {
-  0% {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  100% {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
-}
-
-.main-table .sport-form {
-  margin-bottom: 15px;
-  border-bottom: 1px solid #AEBFCE;
+.sport-filters .sport-form {
+  margin-bottom: 5px;
   padding-bottom: 5px;
 }
 
-.main-table .sport-form input[type="radio"] {
+.sport-filters .sport-form input[type="radio"] {
   display: none;
   opacity: 0;
   width: 0;
   margin: 0;
 }
 
-.main-table .sport-form label {
-  color: #fff;
+.sport-filters .sport-form label {
+  color: #2f2f30;
   position: relative;
 }
 
-.main-table .sport-form label[for="fotboll"],
-.main-table .sport-form label[for="korgboll"],
-.main-table .sport-form label[for="ishockey"],
-.main-table .sport-form label[for="afotboll"] {
+.sport-filters .sport-form label[for="fotboll"],
+.sport-filters .sport-form label[for="korgboll"],
+.sport-filters .sport-form label[for="ishockey"],
+.sport-filters .sport-form label[for="afotboll"] {
   margin: 10px;
   display: inline-block;
   padding-left: 70px;
@@ -190,67 +256,154 @@ html {
   cursor: pointer;
 }
 
-.main-table .sport-form label[for="fotboll"] {
+.sport-filters .sport-form label[for="fotboll"] {
   background: url(../img/football2.png) no-repeat;
   background-position: 0 -69px;
 }
 
-.main-table .sport-form label[for="korgboll"] {
+.sport-filters .sport-form label[for="korgboll"] {
   background: url(../img/basketball2.png) no-repeat;
   background-position: 0 -69px;
 }
 
-.main-table .sport-form label[for="ishockey"] {
+.sport-filters .sport-form label[for="ishockey"] {
   background: url(../img/hockey2.png) no-repeat;
   background-position: 0 -73px;
 }
 
-.main-table .sport-form label[for="afotboll"] {
+.sport-filters .sport-form label[for="afotboll"] {
   background: url(../img/afotball2.png) no-repeat;
-  background-position: 0 -67px;
+  background-position: 0 -69px;
 }
 
-.main-table .sport-form input:checked + label[for="fotboll"],
-.main-table .sport-form input:checked + label[for="korgboll"],
-.main-table .sport-form input:checked + label[for="ishockey"],
-.main-table .sport-form input:checked + label[for="afotboll"] {
+.sport-filters .sport-form input:checked + label[for="fotboll"],
+.sport-filters .sport-form input:checked + label[for="korgboll"],
+.sport-filters .sport-form input:checked + label[for="ishockey"],
+.sport-filters .sport-form input:checked + label[for="afotboll"] {
   background-position: 0 2px;
 }
 
-.main-table .sport-form label[for="fotboll"]:before,
-.main-table .sport-form label[for="korgboll"]:before,
-.main-table .sport-form label[for="ishockey"]:before,
-.main-table .sport-form label[for="afotboll"]:before {
+.sport-filters .sport-form label[for="fotboll"]:before,
+.sport-filters .sport-form label[for="korgboll"]:before,
+.sport-filters .sport-form label[for="ishockey"]:before,
+.sport-filters .sport-form label[for="afotboll"]:before {
   content: "";
   position: absolute;
-  width: 60%;
+  width: 58%;
   height: 4px;
-  bottom: -5px;
+  bottom: -10px;
+  border-radius: 2px;
   left: 0;
   transform: scaleX(0);
   transition: all 0.3s ease-in-out 0s;
 }
 
-.main-table .sport-form label[for="fotboll"]:before {
+.sport-filters .sport-form label[for="fotboll"]:before {
   background-color: #2ecc71;
 }
 
-.main-table .sport-form label[for="korgboll"]:before {
+.sport-filters .sport-form label[for="korgboll"]:before {
   background-color: #e67e22;
 }
 
-.main-table .sport-form label[for="ishockey"]:before {
+.sport-filters .sport-form label[for="ishockey"]:before {
   background-color: #3498db;
 }
 
-.main-table .sport-form label[for="afotboll"]:before {
+.sport-filters .sport-form label[for="afotboll"]:before {
   background-color: #e74c3c;
 }
 
-.main-table .sport-form input:checked + label[for="fotboll"]:before,
-.main-table .sport-form input:checked + label[for="korgboll"]:before,
-.main-table .sport-form input:checked + label[for="ishockey"]:before,
-.main-table .sport-form input:checked + label[for="afotboll"]:before {
+.sport-filters .sport-form input:checked + label[for="fotboll"]:before,
+.sport-filters .sport-form input:checked + label[for="korgboll"]:before,
+.sport-filters .sport-form input:checked + label[for="ishockey"]:before,
+.sport-filters .sport-form input:checked + label[for="afotboll"]:before {
   visibility: visible;
   transform: scaleX(1);
+}
+
+/*  Header-bar Styles
+	============================================================= */
+.header-bar {
+  display: block;
+  width: 100%;
+  height: 50px;
+  border-bottom: 2px solid #d1334e;
+  color: #fff;
+}
+
+.header-bar::after {
+  clear: both;
+  content: "";
+  display: block;
+}
+
+.header-bar--title-left, .header-bar--title-middle, .header-bar--time {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 31.76157%;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  font-size: 21px;
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 50px;
+}
+
+.header-bar--title-left:last-child, .header-bar--title-middle:last-child, .header-bar--time:last-child {
+  margin-right: 0;
+}
+
+.header-bar--title-left {
+  margin-left: 10px;
+}
+
+.header-bar--time {
+  text-align: right;
+  font-size: 13px;
+  line-height: 50px;
+}
+
+/*  Main-talbe Styles
+	============================================================= */
+.main-table {
+  display: block;
+  position: relative;
+  min-height: 400px;
+}
+
+.main-table::after {
+  clear: both;
+  content: "";
+  display: block;
+}
+
+.main-table .table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.main-table .table .table-header {
+  background: #81e0a9;
+}
+
+.main-table .table td {
+  border: 2px solid #d1334e;
+  color: #fff;
+  padding: 8px 4px;
+}
+
+.main-table .table tr:nth-child(even) td {
+  background: #2f2f30;
+}
+
+.main-table .table th {
+  text-align: left;
+  color: #000;
+  font-weight: 500;
+  padding: 8px 4px;
+  text-transform: uppercase;
+  border-right: 2px solid #d1334e;
 }

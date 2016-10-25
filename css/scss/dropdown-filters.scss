@@ -1,31 +1,49 @@
 
-/*  Left Sidebar Styles
+/*  Dropdown Filter Styles
 	============================================================= */
 
-.left-sidebar {
-  @include span-columns(3);
-  margin-top: 20px;
+.dropdown-filters{
+  @include row();
+  padding: 5px 0px 30px 10px;
+  width: 100%;
 
   .team-container,
-  .league-container {
+  .league-container,
+  .date-container,
+  .reset-contaienr {
+    @include span-columns(3);
+    position: relative;
 
-    select {
-      width: 170px;
-      height: 20px;
+    &--title{
+      font-size: 18px;
+      color: $mainred;
+      font-weight: 500;
+      margin: 5px 0;
+      padding: 0;
+      text-transform: uppercase;
+    }
+
+    &--dropdown,
+    &--select {
+      width: 80%;
+      height: 25px;
+      line-height: 30px;
+      display: inline-block;
+      position: relative;
+      bottom: 0;
+      border: 1px solid $mainred;
     }
 
   }
 
-  /* DATE FORM STYLES */
 
-  .date-form {
+  .date-container {
 
-    #datepicker {
-      width: 145px;
-      height: 20px;
+    &--title{
+      margin-bottom: 1px;
     }
 
-    #clear-date {
+    &--clear {
      display: inline-block;
      font-family: "Arial", Serif;
      background: #c0392b;
@@ -37,7 +55,7 @@
      bottom: -5px;
     }
 
-    #clear-date:before, #clear-date:after {
+    &--clear:before, &--clear:after {
      background-color: #fff;
      content: " ";
      height: 12px;
@@ -47,19 +65,18 @@
      width: 2px;
     }
 
-    #clear-date:before {
+    &--clear:before {
      transform: rotate(45deg);
      -ms-transform:rotate(45deg);
      -webkit-transform:rotate(45deg);
     }
 
-    #clear-date:after {
+    &--clear:after {
      transform: rotate(-45deg);
      -ms-transform:rotate(-45deg);
      -webkit-transform:rotate(-45deg);
     }
   }
-
 
 }
 

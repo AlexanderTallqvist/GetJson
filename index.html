@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Get Json</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700" rel="stylesheet">
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">-->
     <link rel="stylesheet" href="css/css/styles.css">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/smoothness/jquery-ui.css">
@@ -12,32 +13,17 @@
   </head>
   <body>
     <div class="container">
-      <div class="row">
 
-        <h1 class="title">Vedonlyöntiareena Tulospalvelu</h1>
+      <div class="header-bar"><!-- HEADER BAR STARTS -->
+        <h3 class="header-bar--title-left">Tulospalvelu</h2>
+        <h1 class="header-bar--title-middle">Vedonlyontiareena.fi</h2>
+        <h4 class="header-bar--time">10.11.2016 - 18.20</h4>
+      </div><!-- HEADER BAR ENDS -->
 
-        <div class="col-sm-3 form-group left-sidebar">
+      <div class="filters">
+        <div class="sport-filters"><!-- SPORT FILTER STARTS -->
 
-          <div class="team-container">
-            <h3>Teams</h4><select class='team-dropdown'><option value='Team'>Choose a team</option></select>
-          </div>
-
-          <div class="league-container">
-            <h3>Leagues</h4><select class='league-dropdown'><option value='League'>Choose a league</option></select>
-          </div>
-
-          <form class="date-form" action="">
-            <h3>Date</h3>
-            <input type="text" name="date" id="datepicker" value="Date">
-            <span id="clear-date"></span>
-          </form>
-
-          <br><br>
-          <button class="reset btn btn-primary">Reset Filters</button>
-        </div>
-
-
-        <div class="col-sm-9 main-table">
+          <div class="result-container"><h4>Results: <span class="result"></span></h4></div>
 
           <form class="sport-form" action="">
             <input type="radio" id="fotboll" name="sport" data-color="#81e0a9" value="Fotboll" checked="checked">
@@ -48,33 +34,58 @@
             <label for="ishockey">Name</label>
             <input type="radio" id="afotboll" name="sport" data-color="#f0938a" value="Afotboll">
             <label for="afotboll">Name</label>
+            <label for="korgboll">Name</label>
+            <input type="radio" id="ishockey" name="sport" data-color="#85c1e9" value="Ishockey">
+          </form>
+        </div><!-- SPORT FILTER ENDS -->
+
+        <div class="dropdown-filters"><!-- DROPDOWN FILTER STARTS -->
+          <div class="team-container">
+            <h3 class="team-container--title">Teams</h3>
+            <select class='team-container--dropdown'><option value='Team'>Choose a team</option></select>
+          </div>
+
+          <div class="league-container">
+            <h3 class="league-container--title">Leagues</h3>
+            <select class='league-container--dropdown'><option value='League'>Choose a league</option></select>
+          </div>
+
+          <form class="date-container" action="">
+            <h3 class="date-container--title">Date</h3>
+            <input class="date-container--select" type="text" name="date" id="datepicker" value="Date">
+            <span class="date-container--clear" id="clear-date"></span>
           </form>
 
-          <div class="loading"><div class="spinner"></div></div>
-
-          <div class="result-container"><h4>Your filters found a total of <span class="result"></span> results:</h4></div>
-
-          <table class="table table-border table-striped">
-            <thead>
-              <tr class="table-header">
-                <th>Sport</th>
-                <th>Date</th>
-                <th>Team1</th>
-                <th>Score</th>
-                <th>Team2</th>
-                <th>Score</th>
-                <th>League</th>
-                <th>City</th>
-                <!--<th>Stream</th>-->
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
-
-          <div class="error-container"></div>
-        </div>
-
+          <div class="reset-contaienr">
+            <button class="reset">Reset Filters</button>
+          </div>
+        </div><!-- DROPDOWN FILTER ENDS -->
       </div>
+
+
+      <div class="main-table">
+        <div class="loading"><div class="spinner"></div></div>
+
+        <table class="table">
+          <thead>
+            <tr class="table-header">
+              <th>Sport</th>
+              <th>Date</th>
+              <th>Team 1</th>
+              <th>T1 Score</th>
+              <th>Team 2</th>
+              <th>T2 Score</th>
+              <th>League</th>
+              <th>City</th>
+              <!--<th>Stream</th>-->
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+
+        <div class="error-container"></div>
+      </div>
+
     </div>
   </body>
 </html>

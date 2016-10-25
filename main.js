@@ -2,8 +2,8 @@
 $(document).ready(function(){
 
   // Asign containers to variables
-  var teamContainer     = $('.team-container select');
-  var leagueContainer   = $('.league-container select');
+  var teamContainer     = $('.team-container--dropdown');
+  var leagueContainer   = $('.league-container--dropdown');
   var resultsContainer  = $('.result-container .result');
   var scoreContainer    = $('.table tbody');
   var errorContainer    = $('.error-container');
@@ -26,8 +26,8 @@ $(document).ready(function(){
 
     var sport  = $('input[name=sport]:checked').val();
     var date   = $('input[name=date]').val();
-    var league = $('.league-dropdown').val();
-    var team   = $('.team-dropdown').val();
+    var league = $('.league-container--dropdown').val();
+    var team   = $('.team-container--dropdown').val();
 
     $.ajax({
       url:"fetchResults.php",
@@ -65,8 +65,8 @@ $(document).ready(function(){
           resultsContainer.html(results);
 
         }else{errorContainer.append(
-          "<div class='error alert alert-info'>No values found. Try resetting your filters." +
-          "<br><br><button class='reset btn btn-primary'>Reset Filters</button></div>"
+          "<div class='error'><h3>No values found. Try resetting your filters.</h3>" +
+          "<button class='reset'>Reset Filters</button></div>"
         );}
        changeColor(color);
        loadingContainer.delay(300).fadeOut();
@@ -134,13 +134,13 @@ $(document).ready(function(){
 
 
   // Get new data when the team is changed
-  $(document).on('change', '.team-dropdown', function() {
+  $(document).on('change', '.team-container--dropdown', function() {
     getScoreData();
   });
 
 
   // Get new data when the league is changed
-  $(document).on('change', '.league-dropdown', function() {
+  $(document).on('change', '.league-container--dropdown', function() {
     getScoreData();
   });
 
@@ -149,9 +149,9 @@ $(document).ready(function(){
   $(document).on('click', '.reset', function() {
     $("#fotboll").prop("checked", true);
     $('input[name=date]').val('Date');
-    $('.league-dropdown').val('League');
-    $('.team-dropdown').val('Team');
-    getScoreData("#81e0a9");
+    $('.league-container--dropdown').val('League');
+    $('.team-container--dropdown').val('Team');
+    getTeamData("#81e0a9");
   });
 
 
