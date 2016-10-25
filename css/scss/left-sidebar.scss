@@ -3,6 +3,7 @@
 	============================================================= */
 
 .left-sidebar {
+  @include span-columns(3);
   margin-top: 20px;
 
   .team-container,

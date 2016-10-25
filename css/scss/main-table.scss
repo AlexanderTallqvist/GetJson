@@ -3,6 +3,7 @@
 	============================================================= */
 
 .main-table {
+  @include span-columns(9)
   position: relative;
 
   .result-container {
