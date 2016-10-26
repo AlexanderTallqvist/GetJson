@@ -8,6 +8,7 @@ $(document).ready(function(){
   var scoreContainer    = $('.table tbody');
   var errorContainer    = $('.error-container');
   var loadingContainer  = $('.loading');
+  var globalData = "";
 
   // Emppty all the containers
   scoreContainer.empty();
@@ -39,9 +40,13 @@ $(document).ready(function(){
         scoreContainer.empty();
         errorContainer.empty();
         resultsContainer.empty();
+        $('table').find('th').removeAttr('id');
+        $('.default-sort').attr('id', 'sort-asc');
       },
 
       success: function(data){
+        globalData = "";
+        globalData = data;
 
         if(data != "No values found"){
           var results = 0;
@@ -49,8 +54,7 @@ $(document).ready(function(){
           $.each(data, function(index, value) {
             results ++;
             scoreContainer.append(
-              "<tr><td>" + value.sport    + "</td>" +
-              "<td>" + value.date         + "</td>" +
+              "<tr><td>" + value.date     + "</td>" +
               "<td>" + value.team1        + "</td>" +
               "<td>" + value.team1_score  + "</td>" +
               "<td>" + value.team2        + "</td>" +
@@ -105,11 +109,112 @@ $(document).ready(function(){
   });
 
 
+  // Function for setting the correct color
   function changeColor(color) {
     setTimeout(function(){
       $('.table-header').css("background", color);
     },300);
   }
+
+
+  // Function for sorting items in ASC
+  function sortAsc(a, b){
+    var key = getSortFilter();
+    if (a[key] < b[key])
+      return -1;
+    if (a[key] > b[key])
+      return 1;
+    return 0;
+  }
+
+
+  // Function for sorting items in DESC
+  function sortDesc(a, b){
+    var key = getSortFilter();
+    if (a[key] < b[key])
+      return 1;
+    if (a[key] > b[key])
+      return -1;
+    return 0;
+  }
+
+  // Function for correctly sorting by date
+  function sortDateDesc(a, b){
+    var Aa = a.date.split(".");
+    var Bb = b.date.split(".");
+
+    a = new Date(Aa[2], Aa[1] - 1, Aa[0]);
+    b = new Date(Bb[2], Bb[1] - 1, Bb[0]);
+
+    if (a < b)
+      return 1;
+    if (a > b)
+      return -1;
+    return 0;
+  }
+
+  // Function for correctly sorting by date
+  function sortDateAsc(a, b){
+    var Aa = a.date.split(".");
+    var Bb = b.date.split(".");
+
+    a = new Date(Aa[2], Aa[1] - 1, Aa[0]);
+    b = new Date(Bb[2], Bb[1] - 1, Bb[0]);
+
+    if (a < b)
+      return -1;
+    if (a > b)
+      return 1;
+    return 0;
+  }
+
+  // Get the current sorting filter
+  function getSortFilter(){
+    return $('#sort-desc, #sort-asc').data('filter');
+  }
+
+
+  // Send the data needed for sorting to the sorting
+  // function and output the results
+  $(document).on('click', 'th', function() {
+    var id = $(this).attr('id');
+    var sorted = "";
+    $('table').find('th').removeAttr('id');
+
+
+    if($(this).hasClass('default-sort')){
+      if(id == 'sort-asc'){
+        $(this).attr('id', 'sort-desc');
+        sorted = globalData.sort(sortDateAsc);
+      }else{
+        $(this).attr('id', 'sort-asc');
+        sorted = globalData.sort(sortDateDesc);
+      }
+    }else{
+    if(id == 'sort-asc'){
+      $(this).attr('id', 'sort-desc');
+      sorted = globalData.sort(sortDesc);
+    }else{
+      $(this).attr('id', 'sort-asc');
+      sorted = globalData.sort(sortAsc);
+    }
+  }
+
+    scoreContainer.html("");
+    $.each(sorted, function(index, value) {
+      scoreContainer.append(
+        "<tr><td>" + value.date     + "</td>" +
+        "<td>" + value.team1        + "</td>" +
+        "<td>" + value.team1_score  + "</td>" +
+        "<td>" + value.team2        + "</td>" +
+        "<td>" + value.team2_score  + "</td>" +
+        "<td>" + value.league       + "</td>" +
+        "<td>" + value.city         + "</td></tr>"
+        //"<td><a class='live-link' target='_blank' href='" + value.live + "'>Live Stream</a>" +
+        //"<div class='box'><iframe width='300' height='200' src='" + value.live + "' frameborder='0'></iframe></div></td></tr>"
+      );
+    });
+  });
 
 
   //Get new data when the sport is changed

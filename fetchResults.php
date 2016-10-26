@@ -64,6 +64,11 @@ function filter_all($values, $data){
   }return $items;
 }
 
+// Function for sorting the dates
+function sortFunction( $a, $b ) {
+  return strtotime($a["date"]) > strtotime($b["date"]) ? -1 : 1;
+}
+
 // Array for checking values from the post
 $check = array('Team', 'Date', 'League', 'Sport');
 
@@ -83,10 +88,11 @@ $data = filter_all($_POST, $_SESSION['data']);
 if(empty($data)){
   array_push($data, "No values found");
 }else{
-  foreach ($data as $key => $row) {
-      $city[$key] = $row['team1_score'];
+  /*foreach ($data as $key => $row) {
+      $team[$key] = $row['team1'];
   }
-  array_multisort($city, SORT_DESC, $data);
+  array_multisort($team, SORT_ASC, $data);*/
+  usort($data, "sortFunction");
 }
 
 // Return Json formatted data

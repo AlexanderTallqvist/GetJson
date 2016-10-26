@@ -35,6 +35,31 @@
   }
 }
 
+
+/* Sorting Filters */
+
+#sort-asc:after {
+  content:"";
+  width: 15px;
+  height: 15px;
+  background: url(../img/down.png) no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: 13px;
+  right:10px;
+}
+
+#sort-desc:after {
+  content:"";
+  width: 15px;
+  height: 15px;
+  background: url(../img/up.png) no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: 13px;
+  right:10px;
+}
+
 /* Reset buttons */
 
 .reset {

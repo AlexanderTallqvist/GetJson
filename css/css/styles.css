@@ -51,6 +51,29 @@ html {
   text-transform: uppercase;
 }
 
+/* Sorting Filters */
+#sort-asc:after {
+  content: "";
+  width: 15px;
+  height: 15px;
+  background: url(../img/down.png) no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: 13px;
+  right: 10px;
+}
+
+#sort-desc:after {
+  content: "";
+  width: 15px;
+  height: 15px;
+  background: url(../img/up.png) no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: 13px;
+  right: 10px;
+}
+
 /* Reset buttons */
 .reset {
   display: block;
@@ -406,4 +429,7 @@ html {
   padding: 8px 4px;
   text-transform: uppercase;
   border-right: 2px solid #d1334e;
+  position: relative;
+  padding-right: 15px;
+  cursor: pointer;
 }
