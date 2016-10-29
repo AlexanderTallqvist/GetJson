@@ -1,14 +1,30 @@
 
+/*  Break Points
+	============================================================= */
+$grids : 12;
+$firstBreak : 850px;
+$secondBreak : 650px;
+$thirdBreak : 650px;
+$last : 1px;
+
+$smallest: new-breakpoint(min-width $last $grids);
+$first: new-breakpoint(min-width $firstBreak $grids);
+$second: new-breakpoint(min-width $secondBreak $grids);
+$third: new-breakpoint(max-width $thirdBreak $grids);
+
+
 /*  Colors for sports
 	============================================================= */
 $football : #2ecc71;
 $hockey : #3498db;
 $basketball : #e67e22;
 $afootball : #e74c3c;
+$baseball : #df802e;
+
 
 /*  Background shades
 	============================================================= */
 $background :#29282d;
 $secodnarybackground : #2f2f30;
-
+$responsivebackground : #48484a;
 $mainred : #d1334e;

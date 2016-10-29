@@ -29,7 +29,8 @@
     label[for="fotboll"],
     label[for="korgboll"],
     label[for="ishockey"],
-    label[for="afotboll"] {
+    label[for="afotboll"],
+    label[for="baseball"] {
       margin: 10px;
       display: inline-block;
       padding-left: 70px;
@@ -57,10 +58,16 @@
       background-position: 0 -69px;
     }
 
+    label[for="baseball"] {
+      background: url(../img/baseball2.png) no-repeat;
+      background-position: 0 -69px;
+    }
+
     input:checked + label[for="fotboll"],
     input:checked + label[for="korgboll"],
     input:checked + label[for="ishockey"],
-    input:checked + label[for="afotboll"] {
+    input:checked + label[for="afotboll"],
+    input:checked + label[for="baseball"] {
       background-position: 0 2px;
     }
 
@@ -68,7 +75,8 @@
     label[for="fotboll"]:before,
     label[for="korgboll"]:before,
     label[for="ishockey"]:before,
-    label[for="afotboll"]:before {
+    label[for="afotboll"]:before,
+    label[for="baseball"]:before {
       content: "";
       position: absolute;
       width: 58%;
@@ -96,10 +104,15 @@
       background-color: $afootball;
     }
 
+    label[for="baseball"]:before {
+      background-color: $baseball;
+    }
+
     input:checked + label[for="fotboll"]:before,
     input:checked + label[for="korgboll"]:before,
     input:checked + label[for="ishockey"]:before,
-    input:checked + label[for="afotboll"]:before {
+    input:checked + label[for="afotboll"]:before,
+    input:checked + label[for="baseball"]:before {
       visibility: visible;
       transform: scaleX(1);
     }

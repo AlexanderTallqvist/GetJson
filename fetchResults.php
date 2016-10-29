@@ -95,6 +95,8 @@ if(empty($data)){
   usort($data, "sortFunction");
 }
 
+$data = array_splice($data, 0, 10);
+
 // Return Json formatted data
 echo json_encode($data);
 

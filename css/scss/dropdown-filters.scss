@@ -11,8 +11,19 @@
   .league-container,
   .date-container,
   .reset-contaienr {
-    @include span-columns(3);
     position: relative;
+
+    @include media($smallest){
+      @include span-columns(12);
+    }
+
+    @include media($second){
+      @include span-columns(5);
+    }
+
+    @include media($first){
+      @include span-columns(3);
+    }
 
     &--title{
       font-size: 18px;
@@ -32,6 +43,14 @@
       position: relative;
       bottom: 0;
       border: 1px solid $mainred;
+
+      @include media($second){
+        width: 90%;
+      }
+
+      @include media($first){
+        width: 80%;
+      }
     }
 
   }
@@ -53,6 +72,10 @@
      cursor: pointer;
      position: relative;
      bottom: -5px;
+    }
+
+    &--select {
+      width: 80%;
     }
 
     &--clear:before, &--clear:after {

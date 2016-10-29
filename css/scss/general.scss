@@ -10,6 +10,8 @@
   @include outer-container;
   font-family: 'Open Sans', sans-serif;
   max-width: 900px;
+  margin-top: 40px;
+  font-size: 16px;
   height: auto;
   background: $background;
   border: 2px solid $mainred;
@@ -70,6 +72,19 @@
   border: none;
   cursor: pointer;
   padding: 10px 20px;
+
+  @include media($smallest){
+    margin: 20px 0px 0px 0px;
+  }
+  @include media($second){
+    margin: 20px 0px 0px 10px;
+  }
+}
+
+.hide {
+  @include media($third){
+    display: none;
+  }
 }
 
 

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html {
   box-sizing: border-box;
 }
@@ -6,6 +7,8 @@ html {
   box-sizing: inherit;
 }
 
+/*  Break Points
+	============================================================= */
 /*  Colors for sports
 	============================================================= */
 /*  Background shades
@@ -22,6 +25,8 @@ html {
   margin-right: auto;
   font-family: 'Open Sans', sans-serif;
   max-width: 900px;
+  margin-top: 40px;
+  font-size: 16px;
   height: auto;
   background: #29282d;
   border: 2px solid #d1334e;
@@ -85,6 +90,24 @@ html {
   padding: 10px 20px;
 }
 
+@media screen and (min-width: 1px) {
+  .reset {
+    margin: 20px 0px 0px 0px;
+  }
+}
+
+@media screen and (min-width: 650px) {
+  .reset {
+    margin: 20px 0px 0px 10px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .hide {
+    display: none;
+  }
+}
+
 /* Error text */
 .error h3 {
   font-size: 20px;
@@ -144,18 +167,61 @@ html {
 .dropdown-filters .league-container,
 .dropdown-filters .date-container,
 .dropdown-filters .reset-contaienr {
-  float: left;
-  display: block;
-  margin-right: 2.35765%;
-  width: 23.23176%;
   position: relative;
 }
 
-.dropdown-filters .team-container:last-child,
-.dropdown-filters .league-container:last-child,
-.dropdown-filters .date-container:last-child,
-.dropdown-filters .reset-contaienr:last-child {
-  margin-right: 0;
+@media screen and (min-width: 1px) {
+  .dropdown-filters .team-container,
+  .dropdown-filters .league-container,
+  .dropdown-filters .date-container,
+  .dropdown-filters .reset-contaienr {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 100%;
+  }
+  .dropdown-filters .team-container:last-child,
+  .dropdown-filters .league-container:last-child,
+  .dropdown-filters .date-container:last-child,
+  .dropdown-filters .reset-contaienr:last-child {
+    margin-right: 0;
+  }
+}
+
+@media screen and (min-width: 650px) {
+  .dropdown-filters .team-container,
+  .dropdown-filters .league-container,
+  .dropdown-filters .date-container,
+  .dropdown-filters .reset-contaienr {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 40.29137%;
+  }
+  .dropdown-filters .team-container:last-child,
+  .dropdown-filters .league-container:last-child,
+  .dropdown-filters .date-container:last-child,
+  .dropdown-filters .reset-contaienr:last-child {
+    margin-right: 0;
+  }
+}
+
+@media screen and (min-width: 850px) {
+  .dropdown-filters .team-container,
+  .dropdown-filters .league-container,
+  .dropdown-filters .date-container,
+  .dropdown-filters .reset-contaienr {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 23.23176%;
+  }
+  .dropdown-filters .team-container:last-child,
+  .dropdown-filters .league-container:last-child,
+  .dropdown-filters .date-container:last-child,
+  .dropdown-filters .reset-contaienr:last-child {
+    margin-right: 0;
+  }
 }
 
 .dropdown-filters .team-container--title,
@@ -186,6 +252,30 @@ html {
   border: 1px solid #d1334e;
 }
 
+@media screen and (min-width: 650px) {
+  .dropdown-filters .team-container--dropdown, .dropdown-filters .team-container--select,
+  .dropdown-filters .league-container--dropdown,
+  .dropdown-filters .league-container--select,
+  .dropdown-filters .date-container--dropdown,
+  .dropdown-filters .date-container--select,
+  .dropdown-filters .reset-contaienr--dropdown,
+  .dropdown-filters .reset-contaienr--select {
+    width: 90%;
+  }
+}
+
+@media screen and (min-width: 850px) {
+  .dropdown-filters .team-container--dropdown, .dropdown-filters .team-container--select,
+  .dropdown-filters .league-container--dropdown,
+  .dropdown-filters .league-container--select,
+  .dropdown-filters .date-container--dropdown,
+  .dropdown-filters .date-container--select,
+  .dropdown-filters .reset-contaienr--dropdown,
+  .dropdown-filters .reset-contaienr--select {
+    width: 80%;
+  }
+}
+
 .dropdown-filters .date-container--title {
   margin-bottom: 1px;
 }
@@ -200,6 +290,10 @@ html {
   cursor: pointer;
   position: relative;
   bottom: -5px;
+}
+
+.dropdown-filters .date-container--select {
+  width: 80%;
 }
 
 .dropdown-filters .date-container--clear:before, .dropdown-filters .date-container--clear:after {
@@ -271,7 +365,8 @@ html {
 .sport-filters .sport-form label[for="fotboll"],
 .sport-filters .sport-form label[for="korgboll"],
 .sport-filters .sport-form label[for="ishockey"],
-.sport-filters .sport-form label[for="afotboll"] {
+.sport-filters .sport-form label[for="afotboll"],
+.sport-filters .sport-form label[for="baseball"] {
   margin: 10px;
   display: inline-block;
   padding-left: 70px;
@@ -299,17 +394,24 @@ html {
   background-position: 0 -69px;
 }
 
+.sport-filters .sport-form label[for="baseball"] {
+  background: url(../img/baseball2.png) no-repeat;
+  background-position: 0 -69px;
+}
+
 .sport-filters .sport-form input:checked + label[for="fotboll"],
 .sport-filters .sport-form input:checked + label[for="korgboll"],
 .sport-filters .sport-form input:checked + label[for="ishockey"],
-.sport-filters .sport-form input:checked + label[for="afotboll"] {
+.sport-filters .sport-form input:checked + label[for="afotboll"],
+.sport-filters .sport-form input:checked + label[for="baseball"] {
   background-position: 0 2px;
 }
 
 .sport-filters .sport-form label[for="fotboll"]:before,
 .sport-filters .sport-form label[for="korgboll"]:before,
 .sport-filters .sport-form label[for="ishockey"]:before,
-.sport-filters .sport-form label[for="afotboll"]:before {
+.sport-filters .sport-form label[for="afotboll"]:before,
+.sport-filters .sport-form label[for="baseball"]:before {
   content: "";
   position: absolute;
   width: 58%;
@@ -337,10 +439,15 @@ html {
   background-color: #e74c3c;
 }
 
+.sport-filters .sport-form label[for="baseball"]:before {
+  background-color: #df802e;
+}
+
 .sport-filters .sport-form input:checked + label[for="fotboll"]:before,
 .sport-filters .sport-form input:checked + label[for="korgboll"]:before,
 .sport-filters .sport-form input:checked + label[for="ishockey"]:before,
-.sport-filters .sport-form input:checked + label[for="afotboll"]:before {
+.sport-filters .sport-form input:checked + label[for="afotboll"]:before,
+.sport-filters .sport-form input:checked + label[for="baseball"]:before {
   visibility: visible;
   transform: scaleX(1);
 }
@@ -350,7 +457,7 @@ html {
 .header-bar {
   display: block;
   width: 100%;
-  height: 50px;
+  min-height: 50px;
   border-bottom: 2px solid #d1334e;
   color: #fff;
 }
@@ -362,12 +469,6 @@ html {
 }
 
 .header-bar--title-left, .header-bar--title-middle, .header-bar--time {
-  float: left;
-  display: block;
-  margin-right: 2.35765%;
-  width: 31.76157%;
-  display: inline-block;
-  margin: 0;
   padding: 0;
   font-size: 21px;
   font-weight: 400;
@@ -375,8 +476,32 @@ html {
   line-height: 50px;
 }
 
-.header-bar--title-left:last-child, .header-bar--title-middle:last-child, .header-bar--time:last-child {
-  margin-right: 0;
+@media screen and (min-width: 1px) {
+  .header-bar--title-left, .header-bar--title-middle, .header-bar--time {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 100%;
+    margin: 5px 5px 5px 10px;
+    line-height: 20px;
+  }
+  .header-bar--title-left:last-child, .header-bar--title-middle:last-child, .header-bar--time:last-child {
+    margin-right: 0;
+  }
+}
+
+@media screen and (min-width: 850px) {
+  .header-bar--title-left, .header-bar--title-middle, .header-bar--time {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 31.76157%;
+    margin: 0;
+    line-height: 50px;
+  }
+  .header-bar--title-left:last-child, .header-bar--title-middle:last-child, .header-bar--time:last-child {
+    margin-right: 0;
+  }
 }
 
 .header-bar--title-left {
@@ -386,7 +511,20 @@ html {
 .header-bar--time {
   text-align: right;
   font-size: 13px;
-  line-height: 50px;
+}
+
+@media screen and (min-width: 1px) {
+  .header-bar--time {
+    text-align: left;
+    line-height: 20px;
+  }
+}
+
+@media screen and (min-width: 850px) {
+  .header-bar--time {
+    text-align: right;
+    line-height: 50px;
+  }
 }
 
 /*  Main-talbe Styles
@@ -395,6 +533,7 @@ html {
   display: block;
   position: relative;
   min-height: 400px;
+  /* RESPONSIVE TABLE STYLES */
 }
 
 .main-table::after {
@@ -412,14 +551,33 @@ html {
   background: #81e0a9;
 }
 
+@media screen and (max-width: 650px) {
+  .main-table .table tr {
+    border-bottom: 10px solid #000;
+  }
+}
+
 .main-table .table td {
-  border: 2px solid #d1334e;
+  border: 1px solid #d1334e !important;
   color: #fff;
   padding: 8px 4px;
 }
 
+@media screen and (max-width: 650px) {
+  .main-table .table td {
+    position: relative;
+    padding-left: 50%;
+  }
+}
+
 .main-table .table tr:nth-child(even) td {
   background: #2f2f30;
+}
+
+@media screen and (max-width: 650px) {
+  .main-table .table tr:nth-child(even) td {
+    background: #48484a;
+  }
 }
 
 .main-table .table th {
@@ -428,8 +586,75 @@ html {
   font-weight: 500;
   padding: 8px 4px;
   text-transform: uppercase;
-  border-right: 2px solid #d1334e;
+  border-right: 2px solid #d1334e !important;
   position: relative;
   padding-right: 15px;
   cursor: pointer;
+}
+
+@media screen and (max-width: 650px) {
+  .main-table table, .main-table thead, .main-table tbody, .main-table th, .main-table td, .main-table tr {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .main-table thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .main-table td:before {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .main-table td:nth-of-type(1):before {
+    content: "Päivämäärä:";
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .main-table td:nth-of-type(2):before {
+    content: "Joukkua 1:";
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .main-table td:nth-of-type(3):before {
+    content: "J1 Tulos:";
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .main-table td:nth-of-type(4):before {
+    content: "Joukkua 2:";
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .main-table td:nth-of-type(5):before {
+    content: "J2 Tulos:";
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .main-table td:nth-of-type(6):before {
+    content: "Liiga:";
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .main-table td:nth-of-type(7):before {
+    content: "Kaupunki:";
+  }
 }

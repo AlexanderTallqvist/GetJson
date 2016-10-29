@@ -61,8 +61,6 @@ $(document).ready(function(){
               "<td>" + value.team2_score  + "</td>" +
               "<td>" + value.league       + "</td>" +
               "<td>" + value.city         + "</td></tr>"
-              //"<td><a class='live-link' target='_blank' href='" + value.live + "'>Live Stream</a>" +
-              //"<div class='box'><iframe width='300' height='200' src='" + value.live + "' frameborder='0'></iframe></div></td></tr>"
             );
           });
 
@@ -70,7 +68,7 @@ $(document).ready(function(){
 
         }else{errorContainer.append(
           "<div class='error'><h3>No values found. Try resetting your filters.</h3>" +
-          "<button class='reset'>Reset Filters</button></div>"
+          "<button class='reset hide'>Reset Filters</button></div>"
         );}
        changeColor(color);
        loadingContainer.delay(300).fadeOut();
@@ -177,43 +175,43 @@ $(document).ready(function(){
   // Send the data needed for sorting to the sorting
   // function and output the results
   $(document).on('click', 'th', function() {
-    var id = $(this).attr('id');
-    var sorted = "";
-    $('table').find('th').removeAttr('id');
+    if(globalData != "No values found"){
+      var id = $(this).attr('id');
+      var sorted = "";
+      $('table').find('th').removeAttr('id');
 
 
-    if($(this).hasClass('default-sort')){
+      if($(this).hasClass('default-sort')){
+        if(id == 'sort-asc'){
+          $(this).attr('id', 'sort-desc');
+          sorted = globalData.sort(sortDateAsc);
+        }else{
+          $(this).attr('id', 'sort-asc');
+          sorted = globalData.sort(sortDateDesc);
+        }
+      }else{
       if(id == 'sort-asc'){
         $(this).attr('id', 'sort-desc');
-        sorted = globalData.sort(sortDateAsc);
-      }else{
-        $(this).attr('id', 'sort-asc');
-        sorted = globalData.sort(sortDateDesc);
-      }
-    }else{
-    if(id == 'sort-asc'){
-      $(this).attr('id', 'sort-desc');
-      sorted = globalData.sort(sortDesc);
-    }else{
-      $(this).attr('id', 'sort-asc');
-      sorted = globalData.sort(sortAsc);
-    }
-  }
+        sorted = globalData.sort(sortDesc);
+        }else{
+          $(this).attr('id', 'sort-asc');
+          sorted = globalData.sort(sortAsc);
+          }
+        }
 
-    scoreContainer.html("");
-    $.each(sorted, function(index, value) {
-      scoreContainer.append(
-        "<tr><td>" + value.date     + "</td>" +
-        "<td>" + value.team1        + "</td>" +
-        "<td>" + value.team1_score  + "</td>" +
-        "<td>" + value.team2        + "</td>" +
-        "<td>" + value.team2_score  + "</td>" +
-        "<td>" + value.league       + "</td>" +
-        "<td>" + value.city         + "</td></tr>"
-        //"<td><a class='live-link' target='_blank' href='" + value.live + "'>Live Stream</a>" +
-        //"<div class='box'><iframe width='300' height='200' src='" + value.live + "' frameborder='0'></iframe></div></td></tr>"
-      );
-    });
+      scoreContainer.html("");
+      $.each(sorted, function(index, value) {
+        scoreContainer.append(
+          "<tr><td>" + value.date     + "</td>" +
+          "<td>" + value.team1        + "</td>" +
+          "<td>" + value.team1_score  + "</td>" +
+          "<td>" + value.team2        + "</td>" +
+          "<td>" + value.team2_score  + "</td>" +
+          "<td>" + value.league       + "</td>" +
+          "<td>" + value.city         + "</td></tr>"
+        );
+      });
+    }
   });
 
 

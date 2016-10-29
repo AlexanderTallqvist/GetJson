@@ -15,14 +15,28 @@
       background: #81e0a9;
     }
 
+  tr {
+    @include media($third){
+      border-bottom: 10px solid #000;
+    }
+  }
+
    td {
-      border: 2px solid $mainred;
+      border: 1px solid $mainred!important;
       color: #fff;
       padding: 8px 4px;
+      @include media($third){
+    		position: relative;
+    		padding-left: 50%;
+      }
     }
 
     tr:nth-child(even) td {
       background: $secodnarybackground;
+
+      @include media($third){
+        background: $responsivebackground;
+      }
     }
 
     th {
@@ -31,12 +45,83 @@
       font-weight: 500;
       padding: 8px 4px;
       text-transform: uppercase;
-      border-right: 2px solid $mainred;
+      border-right: 2px solid $mainred!important;
       position: relative;
       padding-right: 15px;
       cursor: pointer;
     }
   }
+
+/* RESPONSIVE TABLE STYLES */
+
+  table, thead, tbody, th, td, tr {
+    @include media($third){
+      display: block;
+    }
+  }
+
+  thead tr {
+    @include media($third){
+      position: absolute;
+  		top: -9999px;
+  		left: -9999px;
+    }
+  }
+
+  td:before {
+    @include media($third){
+      position: absolute;
+  		top: 6px;
+  		left: 6px;
+  		width: 45%;
+  		padding-right: 10px;
+  		white-space: nowrap;
+    }
+  }
+
+	td:nth-of-type(1):before {
+    @include media($third){
+      content: "Päivämäärä:";
+    }
+  }
+
+  td:nth-of-type(2):before {
+    @include media($third){
+      content: "Joukkua 1:";
+    }
+  }
+
+  td:nth-of-type(3):before {
+    @include media($third){
+      content: "J1 Tulos:";
+    }
+  }
+
+  td:nth-of-type(4):before {
+    @include media($third){
+      content: "Joukkua 2:";
+    }
+  }
+
+  td:nth-of-type(5):before {
+    @include media($third){
+      content: "J2 Tulos:";
+    }
+  }
+
+  td:nth-of-type(6):before {
+    @include media($third){
+      content: "Liiga:";
+    }
+  }
+
+  td:nth-of-type(7):before {
+    @include media($third){
+      content: "Kaupunki:";
+    }
+  }
+
+
 
 
 
